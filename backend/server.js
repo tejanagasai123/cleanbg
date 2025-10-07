@@ -15,8 +15,8 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.send("hi from server side :" + port);
 })
-app.use('api/user',UserRouter)
+app.use('/api/user',UserRouter)
 app.listen(port,  () => {
-   console.log("dotenv",process.env.MONGODB_URL)
+   console.log("from server.js file mongodb connected")
     console.log("hi server connected");
 })

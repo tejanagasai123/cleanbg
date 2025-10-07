@@ -4,10 +4,12 @@ import userModel from "../models/userModel.js";
 const clerkwebhooks = async (req,res)=>
 {
    try {
-    const webhook = new Webhook(process.env.CLERKSIGNIN_SECREAT);
-    await Webhook.verify(JSON.stringify(req.body),{"svix-id":req.headers['svix-id'],
+    const webhook = new Webhook(process.env.CLERKSIGNIN_SECRATE);
+    await Webhook.verify(JSON.stringify(req.body),{
+        "svix-id":req.headers['svix-id'],
         "svix-timestamp":req.headers["svix-timestamp"],
-        "svix-signature":req.headers["svix-signature"],})
+        "svix-signature":req.headers["svix-signature"]
+    })
 
         const {data,type} = req.body;
         switch (type) {
@@ -50,8 +52,7 @@ const clerkwebhooks = async (req,res)=>
                     LastName:data.last_name,
                     photo:data.image_url
                 }
-                await userModel
-                .findOneAndDelete({UserId:data.id});
+                await userModel.findOneAndDelete({UserId:data.id});
                 res.json({});
                 break;
 
@@ -60,7 +61,7 @@ const clerkwebhooks = async (req,res)=>
                 
         
             default:
-                res.json({reason:"your request not accepted please check your reuest "})
+                res.json({reason:"your request not accepted please check your request "})
                 break;
         }
     
