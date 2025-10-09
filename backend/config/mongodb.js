@@ -1,9 +1,11 @@
 import mongoose from "mongoose";
 const connectDb = async () => {
-        await mongoose.connect(process.env.MONGODB_URL).then(()=> console.log("from mongo connection file ")).catch((error)=>{ console.log(`error occured at  connection of database: ${error.message}`);
-        process.exit(1);}
-        )
-   
+        mongoose.connection.on('connected' , ()=>
+        {
+                console.log("Database  connected");
+        })
+        await mongoose.connect(`${process.env.MONGODB_URL}/cleanbg`)
 }
+        
 export default connectDb
 

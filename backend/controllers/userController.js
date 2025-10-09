@@ -5,9 +5,9 @@ const clerkwebhooks = async (req,res)=>
 {
    try {
     const webhook = new Webhook(process.env.CLERKSIGNIN_SECRATE);
-    await Webhook.verify(JSON.stringify(req.body),{
+    await webhook.verify(JSON.stringify(req.body),{
         "svix-id":req.headers['svix-id'],
-        "svix-timestamp":req.headers["svix-timestamp"],
+         "svix-timestamp":req.headers["svix-timestamp"],
         "svix-signature":req.headers["svix-signature"]
     })
 

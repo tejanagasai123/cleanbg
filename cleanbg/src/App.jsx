@@ -10,6 +10,7 @@ const App = () => {
   return (
     <div className=" mt-5 mx-8 md:mx-10 lg:mx-20 p-2 md:p-5">
 <Navbar></Navbar>
+
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/result" element={<Result/>} />
