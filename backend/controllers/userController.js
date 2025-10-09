@@ -31,7 +31,6 @@ const clerkwebhooks = async (req,res)=>
                 {
                 const UserData=
                 {
-                 UserId:data.id,
                   Email:data.email_addresses[0].email_address,
                    FirstName:data.first_name,
                     LastName:data.last_name,
