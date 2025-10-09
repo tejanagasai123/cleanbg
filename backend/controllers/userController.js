@@ -43,13 +43,6 @@ const clerkwebhooks = async (req,res)=>
                 }
                  case "user.deleted":
                 {
-                const UserData=
-                {
-                  Email:data.email_addresses[0].email_address,
-                   FirstName:data.first_name,
-                    LastName:data.last_name,
-                    photo:data.image_url
-                }
                 await userModel.findOneAndDelete({UserId:data.id});
                 res.json({});
                 break;
